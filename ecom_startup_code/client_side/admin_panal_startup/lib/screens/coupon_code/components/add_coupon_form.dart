@@ -210,7 +210,7 @@ class CouponSubmitForm extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
+                      foregroundColor: Colors.black87,
                       backgroundColor: secondaryColor,
                     ),
                     onPressed: () {
@@ -228,7 +228,7 @@ class CouponSubmitForm extends StatelessWidget {
                       // Validate and save the form
                       if (context.couponCodeProvider.addCouponFormKey.currentState!.validate()) {
                         context.couponCodeProvider.addCouponFormKey.currentState!.save();
-                        //TODO: should complete call  submitCoupon
+                        context.couponCodeProvider.submitCoupon();
                         Navigator.of(context).pop();
                       }
                     },

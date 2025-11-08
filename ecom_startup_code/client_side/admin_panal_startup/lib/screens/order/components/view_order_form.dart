@@ -237,9 +237,9 @@ class OrderSubmitForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: secondaryColor),
+          style: ElevatedButton.styleFrom(backgroundColor: secondaryColor,foregroundColor: Colors.black87,),
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
+          child:const Text('Cancel'),
         ),
         Gap(defaultPadding),
         ElevatedButton(
@@ -247,7 +247,7 @@ class OrderSubmitForm extends StatelessWidget {
           onPressed: () {
             if (Provider.of<OrderProvider>(context, listen: false).orderFormKey.currentState!.validate()) {
               Provider.of<OrderProvider>(context, listen: false).orderFormKey.currentState!.save();
-              //TODO: should complete call updateOrder
+              context.orderProvider.updateOrder();
               Navigator.of(context).pop();
             }
           },

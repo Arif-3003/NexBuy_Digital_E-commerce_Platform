@@ -110,7 +110,7 @@ DataRow variantTypeDataRow(VariantType VariantTypeInfo, int index, {Function? ed
           },
           icon: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black87,
           ))),
       DataCell(IconButton(
           onPressed: () {

@@ -108,7 +108,7 @@ DataRow subCategoryDataRow(SubCategory subCatInfo, int index, {Function? edit, F
           },
           icon: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black87,
           ))),
       DataCell(IconButton(
           onPressed: () {

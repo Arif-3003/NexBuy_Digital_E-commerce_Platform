@@ -1,3 +1,5 @@
+import 'package:admin/utility/extensions.dart';
+
 import '../../../core/data/data_provider.dart';
 import 'view_order_form.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +62,7 @@ class OrderListSection extends StatelessWidget {
                   rows: List.generate(
                     dataProvider.orders.length,
                     (index) => orderDataRow(dataProvider.orders[index],index+1, delete: () {
-                      //TODO: should complete call deleteOrder
+                      context.orderProvider.deleteOrder(dataProvider.orders[index]);
                     }, edit: () {
                       showOrderForm(context, dataProvider.orders[index]);
                     }),
@@ -107,7 +109,7 @@ DataRow orderDataRow(Order orderInfo, int index, {Function? edit, Function? dele
           },
           icon: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black87,
           ))),
       DataCell(IconButton(
           onPressed: () {

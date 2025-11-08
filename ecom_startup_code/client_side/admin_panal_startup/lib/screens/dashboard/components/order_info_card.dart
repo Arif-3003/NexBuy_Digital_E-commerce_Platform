@@ -43,11 +43,11 @@ class OrderInfoCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    "$totalOrder Files",
+                    "$totalOrder Order",
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall!
-                        .copyWith(color: Colors.white70),
+                        .copyWith(color: Colors.black87),
                   ),
                 ],
               ),

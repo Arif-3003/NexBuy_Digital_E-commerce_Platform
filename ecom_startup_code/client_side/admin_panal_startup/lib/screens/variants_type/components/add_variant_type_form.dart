@@ -64,7 +64,7 @@ class VariantTypeSubmitForm extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
+                      foregroundColor: Colors.black,
                       backgroundColor: secondaryColor,
                     ),
                     onPressed: () {

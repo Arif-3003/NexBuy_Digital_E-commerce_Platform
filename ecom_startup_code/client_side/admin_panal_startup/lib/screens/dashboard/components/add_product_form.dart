@@ -153,7 +153,7 @@ class ProductSubmitForm extends StatelessWidget {
                         displayItem: (Category? category) => category?.name ?? '',
                         onChanged: (newValue) {
                           if (newValue != null) {
-                            //TODO: should complete call  filterSubcategory
+                            context.dashBoardProvider.filterSubcategory(newValue);
                           }
                         },
                         validator: (value) {
@@ -175,7 +175,7 @@ class ProductSubmitForm extends StatelessWidget {
                         displayItem: (SubCategory? subCategory) => subCategory?.name ?? '',
                         onChanged: (newValue) {
                           if (newValue != null) {
-                            //TODO: should complete call filterBrand
+                             context.dashBoardProvider.filterBrand(newValue);
                           }
                         },
                         validator: (value) {
@@ -267,7 +267,7 @@ class ProductSubmitForm extends StatelessWidget {
                           displayItem: (VariantType? variantType) => variantType?.name ?? '',
                           onChanged: (newValue) {
                             if (newValue != null) {
-                              //TODO: should complete call filterVariant
+                              context.dashBoardProvider.filterVariant(newValue);
                             }
                           },
                           hintText: 'Select Variant type',
@@ -300,7 +300,7 @@ class ProductSubmitForm extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
+                      foregroundColor: Colors.black,
                       backgroundColor: secondaryColor,
                     ),
                     onPressed: () {
@@ -318,7 +318,7 @@ class ProductSubmitForm extends StatelessWidget {
                       // Validate and save the form
                       if (context.dashBoardProvider.addProductFormKey.currentState!.validate()) {
                         context.dashBoardProvider.addProductFormKey.currentState!.save();
-                        //TODO: should complete call submitProduct
+                        context.dashBoardProvider.submitProduct();
                         Navigator.of(context).pop();
                       }
                     },

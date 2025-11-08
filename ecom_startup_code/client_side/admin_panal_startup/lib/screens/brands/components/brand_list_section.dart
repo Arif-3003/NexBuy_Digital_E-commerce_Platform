@@ -100,7 +100,7 @@ DataRow brandDataRow(Brand brandInfo, int index, {Function? edit, Function? dele
           },
           icon: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black87,
           ))),
       DataCell(IconButton(
           onPressed: () {

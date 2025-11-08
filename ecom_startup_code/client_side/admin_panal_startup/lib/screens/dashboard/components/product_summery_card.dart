@@ -66,7 +66,7 @@ class ProductSummeryCard extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
-                      .copyWith(color: Colors.white70),
+                      .copyWith(color: Colors.black87),
                 ),
               ],
             )

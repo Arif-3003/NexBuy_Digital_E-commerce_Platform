@@ -42,12 +42,44 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Admin Panel',
-      theme: ThemeData.dark().copyWith(
+      title: 'NexBuy',
+      theme: ThemeData(
+        brightness: Brightness.light,
         scaffoldBackgroundColor: bgColor,
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.white),
-        canvasColor: secondaryColor,
+        primaryColor: primaryColor,
+        textTheme: GoogleFonts.poppinsTextTheme().apply(
+          bodyColor: textColor,
+          displayColor: textColor,
+        ),
+        iconTheme: const IconThemeData(color: textColor),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 1,
+          iconTheme: IconThemeData(color: textColor),
+          titleTextStyle: TextStyle(
+            color: textColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+            elevation: 2,
+          ),
+        ),
+        colorScheme: const ColorScheme.light().copyWith(
+          primary: primaryColor,
+          surface: Colors.white,
+          onSurface: textColor,
+        ),
       ),
+
+
       initialRoute: AppPages.HOME,
       unknownRoute: GetPage(name: '/notFount', page: () => MainScreen()),
       defaultTransition: Transition.cupertino,

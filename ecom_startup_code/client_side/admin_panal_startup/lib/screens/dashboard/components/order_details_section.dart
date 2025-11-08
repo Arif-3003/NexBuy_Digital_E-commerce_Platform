@@ -1,3 +1,5 @@
+import 'package:admin/utility/extensions.dart';
+
 import '../../../core/data/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,13 +16,13 @@ class OrderDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DataProvider>(
       builder: (context, dataProvider, child) {
-        //TODO: should complete Make this order number dynamic bt calling calculateOrdersWithStatus
-        int totalOrder = 0;
-        int pendingOrder = 0;
-        int processingOrder = 0;
-        int cancelledOrder = 0;
-        int shippedOrder = 0;
-        int deliveredOrder = 0;
+
+        int totalOrder = context.dataProvider.calculateOrderWithStatus();
+        int pendingOrder = context.dataProvider.calculateOrderWithStatus(orderStatus: 'pending');
+        int processingOrder = context.dataProvider.calculateOrderWithStatus(orderStatus: 'processing');
+        int cancelledOrder = context.dataProvider.calculateOrderWithStatus(orderStatus: 'cancelled');
+        int shippedOrder = context.dataProvider.calculateOrderWithStatus(orderStatus: 'shipped');
+        int deliveredOrder = context.dataProvider.calculateOrderWithStatus(orderStatus: 'delivered');
         return Container(
           padding: EdgeInsets.all(defaultPadding),
           decoration: BoxDecoration(

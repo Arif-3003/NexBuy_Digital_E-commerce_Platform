@@ -1,3 +1,5 @@
+import 'package:admin/utility/extensions.dart';
+
 import '../../../core/data/data_provider.dart';
 import 'add_poster_form.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +49,7 @@ class PosterListSection extends StatelessWidget {
                   rows: List.generate(
                     dataProvider.posters.length,
                     (index) => posterDataRow(dataProvider.posters[index], delete: () {
-                      //TODO: should complete call deletePoster
+                      context.posterProvider.deletePoster(dataProvider.posters[index]);
 
                     }, edit: () {
                       showAddPosterForm(context, dataProvider.posters[index]);
@@ -90,7 +92,7 @@ DataRow posterDataRow(Poster poster, {Function? edit, Function? delete}) {
           },
           icon: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black87,
           ))),
       DataCell(IconButton(
           onPressed: () {

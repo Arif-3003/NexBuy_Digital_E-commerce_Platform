@@ -34,16 +34,18 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
-            colorScheme: ColorScheme.light(
-              primary: primaryColor, // header background color
-              onPrimary: Colors.white, // header text color
-              onSurface: Colors.black, // body text color
+            colorScheme: const ColorScheme.light(
+              primary: Color(0xFF2697FF), // Header, active day, and OK button
+              onPrimary: Colors.white, // Text on the blue background
+              onSurface: Colors.black, // Regular text color (month/day numbers)
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: secondaryColor, // button text color
+                foregroundColor: Color(0xFF2697FF), // ✅ Force "OK"/"Cancel" text color
+                textStyle: TextStyle(fontWeight: FontWeight.w600),
               ),
             ),
+            dialogBackgroundColor: Colors.white, // Dialog background
           ),
           child: child!,
         );

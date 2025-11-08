@@ -94,7 +94,7 @@ DataRow categoryDataRow(Category CatInfo, {Function? edit, Function? delete}) {
           },
           icon: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black87,
           ))),
       DataCell(IconButton(
           onPressed: () {

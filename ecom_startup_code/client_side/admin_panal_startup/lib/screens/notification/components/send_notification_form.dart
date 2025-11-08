@@ -59,7 +59,7 @@ class SendNotificationForm extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
+                      foregroundColor: Colors.black87,
                       backgroundColor: secondaryColor,
                     ),
                     onPressed: () {
@@ -77,7 +77,7 @@ class SendNotificationForm extends StatelessWidget {
                       // Validate and save the form
                       if (context.notificationProvider.sendNotificationFormKey.currentState!.validate()) {
                         context.notificationProvider.sendNotificationFormKey.currentState!.save();
-                        //TODO: should complete call sendNotification
+                        context.notificationProvider.sendNotification();
                         Navigator.of(context).pop();
                       }
                     },
