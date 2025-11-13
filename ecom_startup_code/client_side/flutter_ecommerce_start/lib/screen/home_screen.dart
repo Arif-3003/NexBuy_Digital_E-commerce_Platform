@@ -1,3 +1,4 @@
+import 'chat/chat_screen.dart';
 import 'product_cart_screen/cart_screen.dart';
 import 'product_favorite_screen/favorite_screen.dart';
 import 'product_list_screen/product_list_screen.dart';
@@ -62,6 +63,17 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           child: HomeScreen.screens[newIndex],
         ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ChatScreen()),
+            );
+          },
+          label: const Text('Chat with NexBuyBot'),
+          icon: const Icon(Icons.chat_bubble_outline),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
