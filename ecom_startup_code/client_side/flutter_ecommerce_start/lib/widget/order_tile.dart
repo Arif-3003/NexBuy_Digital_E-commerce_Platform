@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utility/app_color.dart';
 
 class OrderTile extends StatelessWidget {
@@ -8,6 +7,7 @@ class OrderTile extends StatelessWidget {
   final String date;
   final String status;
   final VoidCallback? onTap;
+  final Widget? trailing; // <-- added trailing
 
   const OrderTile({
     super.key,
@@ -16,6 +16,7 @@ class OrderTile extends StatelessWidget {
     required this.date,
     required this.status,
     this.onTap,
+    this.trailing, // <-- added trailing
   });
 
   @override
@@ -72,6 +73,10 @@ class OrderTile extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (trailing != null) ...[
+                    const SizedBox(width: 8),
+                    trailing!, // <-- display trailing widget
+                  ],
                 ],
               ),
             ],

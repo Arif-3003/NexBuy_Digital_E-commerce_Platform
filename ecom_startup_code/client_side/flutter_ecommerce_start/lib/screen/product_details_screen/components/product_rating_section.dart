@@ -21,7 +21,7 @@ class ProductRatingSection extends StatelessWidget {
           onRatingUpdate: (_) {},
         ),
         Text(
-          "(4500 Reviews)",
+          "(100 Reviews)",
           style: Theme.of(context).textTheme.displaySmall?.copyWith(
             fontWeight: FontWeight.w300,
           ),

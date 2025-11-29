@@ -44,4 +44,5 @@ class HttpService  {
       return Response(body: json.encode({'message': e.toString()}), statusCode: 500);
     }
   }
+
 }

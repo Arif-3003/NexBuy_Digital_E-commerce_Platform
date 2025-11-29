@@ -15,12 +15,14 @@ class ApplyCouponButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         elevation: 2,
         foregroundColor: Colors.white,
+        backgroundColor: Colors.green,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       ),
-      child: const Text('Apply'),
+      child:
+      const Text('Apply'),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:e_commerce_flutter/screen/product_details_screen/provider/product_detail_provider.dart';
+import 'package:e_commerce_flutter/utility/extensions.dart';
 import 'package:e_commerce_flutter/utility/utility_extention.dart';
 
 import '../../../models/coupon.dart';

@@ -27,7 +27,7 @@ class HorizontalList<T> extends StatelessWidget {
                 onSelected: (bool selected) {
                   onSelect(item);
                 },
-                backgroundColor: Colors.grey[200],
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
                 selectedColor: Colors.orangeAccent,
                 showCheckmark: false,
               ),

@@ -2,6 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const User = require('../model/user');
+const bcrypt = require("bcryptjs");
 
 // Get all users
 router.get('/', asyncHandler(async (req, res) => {
@@ -18,24 +19,29 @@ router.post('/login', async (req, res) => {
     const { name, password } = req.body;
 
     try {
-        // Check if the user exists
         const user = await User.findOne({ name });
-
-
         if (!user) {
             return res.status(401).json({ success: false, message: "Invalid name or password." });
         }
-        // Check if the password is correct
-        if (user.password !== password) {
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
             return res.status(401).json({ success: false, message: "Invalid name or password." });
+            notifyListener();
         }
 
-        // Authentication successful
-        res.status(200).json({ success: true, message: "Login successful.",data: user });
+        res.json({
+            success: true,
+            message: "Login successful.",
+            data: user
+        });
+
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
 });
+
 
 
 // Get a user by ID
@@ -52,17 +58,26 @@ router.get('/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-// Create a new user
+
 router.post('/register', asyncHandler(async (req, res) => {
     const { name, password } = req.body;
     if (!name || !password) {
-        return res.status(400).json({ success: false, message: "Name, and password are required." });
+        return res.status(400).json({ success: false, message: "Name and password are required." });
     }
 
     try {
-        const user = new User({ name, password });
-        const newUser = await user.save();
-        res.json({ success: true, message: "User created successfully.", data: null });
+        const existingUser = await User.findOne({ name });
+        if (existingUser) {
+            return res.status(400).json({ success: false, message: "User already exists." });
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const user = new User({ name, password: hashedPassword });
+        await user.save();
+
+        res.json({ success: true, message: "Registration successful.", data: null });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }

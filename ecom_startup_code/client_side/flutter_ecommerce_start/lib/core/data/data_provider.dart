@@ -246,6 +246,22 @@ class DataProvider extends ChangeNotifier {
       print('Error fetching orders: $e');
     }
   }
+  Future<bool> deleteOrder(String orderId) async {
+    try {
+      final response = await service.deleteItem(endpointUrl: 'orders', itemId: orderId);
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print("Delete order error: $e");
+      return false;
+    }
+  }
+
+
+
 
 
 

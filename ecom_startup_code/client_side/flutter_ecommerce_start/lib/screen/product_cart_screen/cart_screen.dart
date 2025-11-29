@@ -67,7 +67,8 @@ class CartScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(20)),
+                    style:
+                    ElevatedButton.styleFrom(backgroundColor: Colors.green,padding: const EdgeInsets.all(20)),
                     onPressed: context.cartProvider.myCartItems.isEmpty
                         ? null
                         : () {

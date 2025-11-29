@@ -70,8 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
               MaterialPageRoute(builder: (_) => const ChatScreen()),
             );
           },
+          backgroundColor: Colors.blue,
           label: const Text('Chat with NexBuyBot'),
-          icon: const Icon(Icons.chat_bubble_outline),
+          icon:
+          const Icon(Icons.chat_bubble_outline),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),

@@ -122,6 +122,9 @@ class ProductDetailScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                          ),
                           onPressed: product.quantity != 0
                               ? () {
                                   context.proDetailProvider.addToCart(product);

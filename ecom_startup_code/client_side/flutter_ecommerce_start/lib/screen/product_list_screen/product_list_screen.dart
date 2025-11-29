@@ -16,42 +16,39 @@ class ProductListScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hello!!!",
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-                Text(
-                  "Lets gets somethings?",
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const PosterSection(),
-                Text(
-                  "Top categories",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                const SizedBox(height: 5),
-                Consumer<DataProvider>(
-                  builder: (context, dataProvider, child) {
-                    return CategorySelector(
-                      categories: dataProvider.categories,
-                    );
-                  },
-                ),
-                Consumer<DataProvider>(
-                  builder: (context, dataProvider, child) {
-                    return ProductGridView(
-                      items: dataProvider.products,
-                    );
-                  },
-                ),
-              ],
+      body: Container(
+        color: const Color(0xFFFFF8FC),   // soft pink background
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Hello!!!", style: Theme.of(context).textTheme.displayLarge),
+                  Text("Lets gets somethings?",
+                      style: Theme.of(context).textTheme.headlineSmall),
+
+                  const PosterSection(),
+
+                  Text("Top categories",
+                      style: Theme.of(context).textTheme.headlineMedium),
+
+                  const SizedBox(height: 5),
+                  Consumer<DataProvider>(
+                    builder: (context, dataProvider, child) {
+                      return CategorySelector(
+                        categories: dataProvider.categories,
+                      );
+                    },
+                  ),
+                  Consumer<DataProvider>(
+                    builder: (context, dataProvider, child) {
+                      return ProductGridView(items: dataProvider.products);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

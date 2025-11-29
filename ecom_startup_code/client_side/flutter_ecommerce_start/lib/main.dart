@@ -6,6 +6,9 @@ import 'screen/product_cart_screen/provider/cart_provider.dart';
 import 'screen/product_details_screen/provider/product_detail_provider.dart';
 import 'screen/product_favorite_screen/provider/favorite_provider.dart';
 import 'screen/profile_screen/provider/profile_provider.dart';
+
+import 'screen/splash_screen.dart'; // <-- NEW
+
 import 'utility/app_theme.dart';
 import 'utility/extensions.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +21,14 @@ import 'package:provider/provider.dart';
 import 'core/data/data_provider.dart';
 import 'models/user.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   var cart = FlutterCart();
+
   OneSignal.initialize("d2c670a4-707a-4cb3-9e20-20ec6a4ef6f9");
   OneSignal.Notifications.requestPermission(true);
+
   await cart.initializeCart(isPersistenceSupportEnabled: true);
 
   runApp(
@@ -43,23 +47,31 @@ Future<void> main() async {
   );
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     User? loginUser = context.userProvider.getLoginUsr();
+
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: lightTheme(),
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,
         },
       ),
-      debugShowCheckedModeBanner: false,
-      home: loginUser?.sId == null ? const LoginScreen() : const HomeScreen(),
-      theme: AppTheme.lightAppTheme,
+
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const SplashScreen(),
+        "/login": (context) => const LoginScreen(),
+        "/home": (context) => const HomeScreen(),
+      },
+
+      home: loginUser?.sId == null ? const SplashScreen() : const HomeScreen(),
     );
   }
 }
